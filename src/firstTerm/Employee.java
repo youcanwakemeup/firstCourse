@@ -4,16 +4,14 @@ public class Employee {
     private final String fullName;
     private int department;
     private int salary;
-    private static int id;
-    private int idCounter() {
-        id++;
-        return id;
-    }
+    private final int id;
+    private static int idCounter = 1;
     public Employee(String fullName, int department, int salary) {
         this.fullName = fullName;
         this.department = department;
         this.salary = salary;
-        this.id = idCounter();
+        id = idCounter;
+        idCounter++;
     }
     public String getFullName() {
         return fullName;
@@ -27,16 +25,27 @@ public class Employee {
     public int getId() {
         return id;
     }
-    public void setDepartment(int department) {
-        this.department = department;
+    public void setDepartment(int department)  {
+        if (department < 1 || department > 5) {
+            throw new IllegalArgumentException("Такого отдела не существует");
+        }
+        else {
+            this.department = department;
+        }
     }
     public void setSalary(int salary) {
-        this.salary = salary;
+        if (salary < 0) {
+            throw new IllegalArgumentException("Зарплата указана неверно");
+        }
+        else {
+            this.salary = salary;
+        }
     }
     @Override
     public String toString() {
         return "ФИО: " + fullName + ", " +
                 "Отдел: " + department + ", " +
-                "Зарплата: " + salary;
+                "Зарплата: " + salary + ", " +
+                "ID: " + id;
     }
 }
