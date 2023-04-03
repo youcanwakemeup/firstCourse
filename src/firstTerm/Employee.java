@@ -3,7 +3,7 @@ package firstTerm;
 public class Employee {
     private final String fullName;
     private int department;
-    private int salary;
+    private double salary;
     private final int id;
     private static int idCounter = 1;
     public Employee(String fullName, int department, int salary) {
@@ -19,7 +19,7 @@ public class Employee {
     public int getDepartment() {
         return department;
     }
-    public int getSalary() {
+    public double getSalary() {
         return salary;
     }
     public int getId() {
@@ -33,7 +33,7 @@ public class Employee {
             this.department = department;
         }
     }
-    public void setSalary(int salary) {
+    public void setSalary(double salary) {
         if (salary < 0) {
             throw new IllegalArgumentException("Зарплата указана неверно");
         }
